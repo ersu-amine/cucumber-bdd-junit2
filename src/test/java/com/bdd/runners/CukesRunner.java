@@ -17,7 +17,6 @@ import org.junit.runner.RunWith;
         tags = "@wip",
         glue = "com/bdd/step_definitions",
         features = "src/test/resources/features"
-
 )
 
 public class CukesRunner {}
