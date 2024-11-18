@@ -21,7 +21,7 @@ public class ConfigurationReader {
 
     public static String getProperty(String key){
         if(properties.getProperty(key) == null) {
-            throw new InvalidParameterException(MessageFormat.format("Missing value for key {0}! OR key does not exist", keyword));
+            throw new InvalidParameterException(MessageFormat.format("Missing value for key {0}! OR key does not exist", key));
         }
         //properties object have getProperty method
         return properties.getProperty(key);
