@@ -1,6 +1,7 @@
 package com.bdd.pages;
 
 import com.bdd.utilities.Driver;
+import org.junit.Assert;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -20,6 +21,11 @@ public class LoginPage {
     @FindBy(name="login-button")
     private WebElement loginButton;
 
+    @FindBy(tagName="h3")
+    private WebElement error;
+
+    //TODO add product page title header element
+
     /**
      *
      * @param username valid username
@@ -30,5 +36,20 @@ public class LoginPage {
         usernameInput.sendKeys(username);
         passwordInput.sendKeys(password);
         loginButton.click();
+    }
+
+    public void enterUsername(String username){
+
+        usernameInput.sendKeys(username);
+    }
+
+    public void clickLoginButton(){
+
+        loginButton.click();
+    }
+
+    public void confirmErrorMessage(String errorMessage){
+
+        Assert.assertEquals(errorMessage, error.getText());
     }
 }
