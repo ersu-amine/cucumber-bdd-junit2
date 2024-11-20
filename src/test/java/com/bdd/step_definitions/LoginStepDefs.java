@@ -19,8 +19,27 @@ public class LoginStepDefs extends LoginPage {
 
         login(username,password);
     }
-    @Then("user should land on the {string} page")
-    public void user_should_land_on_the_page(String pageName) {
+    @Then("user should land on the page with header {string}")
+    public void user_should_land_on_the_page(String header) {
+        //TODO add header validation
 
+    }
+
+    @Then("user should see error message {string}")
+    public void userShouldSeeErrorMessage(String errorMessage) {
+
+        confirmErrorMessage(errorMessage);
+    }
+
+    @When("user enters {string}")
+    public void user_enters(String username) {
+
+        enterUsername(username);
+    }
+
+    @When("user clicks login button")
+    public void user_clicks_login_button() {
+
+        clickLoginButton();
     }
 }
