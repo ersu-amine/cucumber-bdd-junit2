@@ -6,11 +6,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class LoginPage {
-
-    public LoginPage(){
-        PageFactory.initElements(Driver.getDriver(),this);
-    }
+public class LoginPage extends BasePage{
 
     @FindBy(id="user-name")
     private WebElement usernameInput;
@@ -24,7 +20,8 @@ public class LoginPage {
     @FindBy(tagName="h3")
     private WebElement error;
 
-    //TODO add product page title header element
+    @FindBy(xpath = "//div[@id='header_container']//span[.='Products']")
+    private WebElement headerProductsPage;
 
     /**
      *
