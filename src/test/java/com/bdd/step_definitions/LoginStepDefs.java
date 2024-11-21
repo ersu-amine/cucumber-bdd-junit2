@@ -24,7 +24,7 @@ public class LoginStepDefs extends LoginPage {
     public void userShouldSeeErrorMessage(String errorMessage) {
 
         confirmErrorMessage(errorMessage);
-        LOG.info("Error message validation pass");
+        LOG.info("Error message validation PASSED {}",errorMessage);
     }
 
     @When("user enters {string}")
