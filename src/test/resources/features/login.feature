@@ -1,10 +1,10 @@
-@wip
+@smoke @login
 Feature: User should be able to login
 
   Scenario Outline: User should be able to login with valid credentials
     Given user is on the login page
     When user enters "<username>" and "<password>"
-    Then user should land on the page with header "Products"
+    Then user should land on the products page
     Examples:
       | username                | password     |
       | standard_user           | secret_sauce |
@@ -12,6 +12,7 @@ Feature: User should be able to login
       | performance_glitch_user | secret_sauce |
       | error_user              | secret_sauce |
       | visual_user             | secret_sauce |
+
 
   Scenario Outline: User should not be able to login with invalid credentials
     Given user is on the login page
@@ -25,7 +26,7 @@ Feature: User should be able to login
 
   Scenario: User should not be able to login without password
     Given user is on the login page
-    When user enters "<username>"
+    When user enters "standard_user"
     And user clicks login button
     Then user should see error message "Epic sadface: Password is required"
 

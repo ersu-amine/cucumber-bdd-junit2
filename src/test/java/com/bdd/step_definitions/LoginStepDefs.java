@@ -19,16 +19,12 @@ public class LoginStepDefs extends LoginPage {
 
         login(username,password);
     }
-    @Then("user should land on the page with header {string}")
-    public void user_should_land_on_the_page(String header) {
-        //TODO add header validation
-
-    }
 
     @Then("user should see error message {string}")
     public void userShouldSeeErrorMessage(String errorMessage) {
 
         confirmErrorMessage(errorMessage);
+        LOG.info("Error message validation pass");
     }
 
     @When("user enters {string}")
@@ -41,5 +37,6 @@ public class LoginStepDefs extends LoginPage {
     public void user_clicks_login_button() {
 
         clickLoginButton();
+        LOG.info("Login Button has been clicked");
     }
 }
