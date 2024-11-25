@@ -1,4 +1,6 @@
 package com.bdd.step_definitions;
 
-public class ShoppingCartStepDefs {
+import com.bdd.pages.ShoppingCartPage;
+
+public class ShoppingCartStepDefs extends ShoppingCartPage {
 }
