@@ -23,3 +23,5 @@ Feature: As a user I should be able add products to my shopping cart
     And user sees the correct item count on the shopping cart icon
     And user clicks on the shopping cart
     Then user sees the correct item count and total price
+
+    #removing the item from cart
