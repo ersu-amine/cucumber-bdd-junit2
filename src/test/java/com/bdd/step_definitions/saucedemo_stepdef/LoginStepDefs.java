@@ -1,6 +1,6 @@
-package com.bdd.step_definitions;
+package com.bdd.step_definitions.saucedemo_stepdef;
 
-import com.bdd.pages.LoginPage;
+import com.bdd.pages.saucedemo.LoginPage;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -12,7 +12,7 @@ public class LoginStepDefs extends LoginPage {
     @Given("user is on the login page")
     public void user_is_on_the_login_page() {
 
-        LOG.info("Login page navigation Before method");
+        LOG.info("Navigation to login page is in setupMethod");
     }
     @When("user enters {string} and {string}")
     public void user_enters_and(String username, String password) {

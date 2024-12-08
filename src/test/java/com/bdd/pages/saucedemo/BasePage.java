@@ -1,13 +1,16 @@
-package com.bdd.pages;
+package com.bdd.pages.saucedemo;
 
+import com.bdd.utilities.Driver;
 import org.junit.Assert;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
-public class ProductsPage extends BasePage{
+public abstract class BasePage {
 
-    @FindBy(xpath = "//div[@id='header_container']//span[.='Products']")
-    private WebElement header;
+    public BasePage(){
+        PageFactory.initElements(Driver.getDriver(),this);
+    }
 
     @FindBy(id="react-burger-menu-btn")
     private WebElement hamburgerMenu;
@@ -15,12 +18,8 @@ public class ProductsPage extends BasePage{
     @FindBy(id = "logout_sidebar_link")
     private WebElement logoutLink;
 
-    @FindBy(id = "login-button")
+    @FindBy(name="login-button")
     private WebElement loginButton;
-
-    public void confirmProductsHeader(){
-        Assert.assertEquals("Products page header does not match","Products",header.getText());
-    }
 
     public void clickMenu(){
         hamburgerMenu.click();

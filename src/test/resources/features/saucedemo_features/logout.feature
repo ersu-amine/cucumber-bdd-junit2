@@ -1,3 +1,4 @@
+@smoke @logout
 Feature: User should be able to logout successfully
 
 Background:
