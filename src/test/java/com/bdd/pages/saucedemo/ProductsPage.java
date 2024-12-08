@@ -4,33 +4,23 @@ import org.junit.Assert;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+import java.util.List;
+
 public class ProductsPage extends BasePage{
 
     @FindBy(xpath = "//div[@id='header_container']//span[.='Products']")
-    private WebElement header;
+    private WebElement pageHeader;
 
-    @FindBy(id="react-burger-menu-btn")
-    private WebElement hamburgerMenu;
+    @FindBy(css="div.inventory_item_label>a>div")
+    private List<WebElement> productList;
 
-    @FindBy(id = "logout_sidebar_link")
-    private WebElement logoutLink;
 
-    @FindBy(id = "login-button")
-    private WebElement loginButton;
+//    @FindBy(id = "login-button")
+//    private WebElement loginButton;
 
     public void confirmProductsHeader(){
-        Assert.assertEquals("Products page header does not match","Products",header.getText());
+        Assert.assertEquals("Products page header does not match","Products",pageHeader.getText());
     }
 
-    public void clickMenu(){
-        hamburgerMenu.click();
-    }
 
-    public void clickLogoutLink(){
-        logoutLink.click();
-    }
-
-    public void confirmLoginButtonVisibility(){
-        Assert.assertTrue("Login button is not visible",loginButton.isDisplayed());
-    }
 }
