@@ -1,4 +1,4 @@
-package com.bdd.pages;
+package com.bdd.pages.saucedemo;
 
 import org.junit.Assert;
 import org.openqa.selenium.WebElement;

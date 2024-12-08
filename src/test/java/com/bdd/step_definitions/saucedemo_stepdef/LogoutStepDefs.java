@@ -1,6 +1,6 @@
-package com.bdd.step_definitions;
+package com.bdd.step_definitions.saucedemo_stepdef;
 
-import com.bdd.pages.ProductsPage;
+import com.bdd.pages.saucedemo.ProductsPage;
 import com.bdd.utilities.Driver;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
