@@ -11,27 +11,29 @@ import java.util.Map;
 
 public class ProductsPage extends BasePage{
     private final Map<String,String> items = new HashMap<>();
-    private final String [] ITEM1 = {"Sauce Labs Backpack",
-            "carry.allTheThings() with the sleek, streamlined Sly Pack that melds uncompromising style with unequaled laptop and tablet protection.",
-            "$29.99"};
-    private final String [] ITEM2 = {"Sauce Labs Bike Light",
+
+    //named based on item numbers from UI html source
+    private final String [] ITEM0 = {"Sauce Labs Bike Light",
             "A red light isn't the desired state in testing but it sure helps when riding your bike at night. Water-resistant with 3 lighting modes, 1 AAA battery included.",
             "$9.99"};
-
-    private final String [] ITEM3 = {"Sauce Labs Bolt T-Shirt",
+    private final String [] ITEM1 = {"Sauce Labs Bolt T-Shirt",
             "Get your testing superhero on with the Sauce Labs bolt T-shirt. From American Apparel, 100% ringspun combed cotton, heather gray with red bolt.",
             "$15.99"};
-    private final String [] ITEM4 = {"Sauce Labs Fleece Jacket ",
-            "It's not every day that you come across a midweight quarter-zip fleece jacket capable of handling everything from a relaxing day outdoors to a busy day at the office.",
-            "$49.99"};
-    private final String [] ITEM5 = {"Sauce Labs Onesie ",
+    private final String [] ITEM2 = {"Sauce Labs Onesie ",
             "Rib snap infant onesie for the junior automation engineer in development. Reinforced 3-snap bottom closure, two-needle hemmed sleeved and bottom won't unravel.",
             "$7.99"};
-    private final String [] ITEM6= {"Test.allTheThings() T-Shirt (Red)",
+    private final String [] ITEM3= {"Test.allTheThings() T-Shirt (Red)",
             "This classic Sauce Labs t-shirt is perfect to wear when cozying up to your keyboard to automate a few tests. Super-soft and comfy ringspun combed cotton.",
             "$15.99"};
+    private final String [] ITEM4 = {"Sauce Labs Backpack",
+            "carry.allTheThings() with the sleek, streamlined Sly Pack that melds uncompromising style with unequaled laptop and tablet protection.",
+            "$29.99"};
 
-    private final String [][] ALLITEMS = {ITEM1,ITEM2,ITEM3,ITEM4,ITEM5,ITEM6};
+    private final String [] ITEM5 = {"Sauce Labs Fleece Jacket ",
+            "It's not every day that you come across a midweight quarter-zip fleece jacket capable of handling everything from a relaxing day outdoors to a busy day at the office.",
+            "$49.99"};
+
+    private final String [][] ALLITEMS = {ITEM1,ITEM2,ITEM3,ITEM4,ITEM5,ITEM0};
 
     @FindBy(xpath = "//div[@id='header_container']//span[.='Products']")
     private WebElement pageHeader;
@@ -39,23 +41,9 @@ public class ProductsPage extends BasePage{
     @FindBy(css="div.inventory_item_label>a>div")
     private List<WebElement> productList;
 
-
-//    @FindBy(id = "login-button")
-//    private WebElement loginButton;
-
     public void confirmProductsHeader(){
         Assert.assertEquals("Products page header does not match","Products",pageHeader.getText());
     }
-
-//    public Map<String,String> getItemDescription(String key){
-//        Map<String,String> item = new HashMap<>();
-//
-//    }
-//
-//    public Map<String,String> getItemPrice(String key){
-//        Map<String,String> item = new HashMap<>();
-//
-//    }
 
     private Map<String,List<String>> getItemsMap(){
         Map<String, List<String>> itemsMap = putIntoList(ALLITEMS);
@@ -79,9 +67,4 @@ public class ProductsPage extends BasePage{
         }
         return itemsMap;
     }
-
-    public void getPricesMap(){
-
-    }
-
 }
