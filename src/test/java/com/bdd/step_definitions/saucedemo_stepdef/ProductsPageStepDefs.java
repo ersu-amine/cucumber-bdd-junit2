@@ -8,14 +8,10 @@ import io.cucumber.java.en.When;
 import java.util.List;
 
 public class ProductsPageStepDefs extends ProductsPage {
+    List<String> actualProductTitles;
     @Then("user should land on the products page")
     public void user_should_land_on_the_products_page(){
         confirmProductsHeader();
-    }
-
-    @Then("user sees the following products")
-    public void user_sees_the_following_products(List<String> expectedProductTitles) {
-
     }
 
     @When("user clicks on item {string}")
@@ -32,4 +28,8 @@ public class ProductsPageStepDefs extends ProductsPage {
 
     }
 
+    @And("user should see item's title, description and price")
+    public void userShouldSeeItemSTitleDescriptionAndPrice() {
+        //TODO title, description and price are visible
+    }
 }
