@@ -10,7 +10,10 @@ import org.apache.logging.log4j.Logger;
 import java.util.List;
 
 public class ProductsPageStepDefs extends ProductsPage {
+
     Logger LOG = LogManager.getLogger();
+
+    List<String> actualProductTitles;
 
     @Then("user should land on the products page")
     public void user_should_land_on_the_products_page(){
@@ -24,6 +27,7 @@ public class ProductsPageStepDefs extends ProductsPage {
         LOG.info("Product titles are as EXPECTED");
 
     }
+
 
     @When("user clicks on item {string}")
     public void user_clicks_on_item(String itemTitle) {
@@ -40,4 +44,8 @@ public class ProductsPageStepDefs extends ProductsPage {
 
     }
 
+    @And("user should see item's title, description and price")
+    public void userShouldSeeItemSTitleDescriptionAndPrice() {
+        //TODO title, description and price are visible
+    }
 }
