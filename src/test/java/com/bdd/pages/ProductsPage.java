@@ -1,8 +1,10 @@
 package com.bdd.pages;
 
 import com.bdd.utilities.BrowserUtilities;
+import com.bdd.utilities.Driver;
 import com.bdd.utilities.Products;
 import org.junit.Assert;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
@@ -64,16 +66,15 @@ public class ProductsPage extends BasePage {
      * @param item product title
      * @return map containing item,description, price
      */
-    private static Map<String, String> getItemMap(String item) {
+    public static Map<String, String> getItemMap(String item) {
         //create map to store item information
         Map<String, String> itemMap = new HashMap<>();
         //find item in all items map and put info to new map
         if (allItemsMap.containsKey(item)) {
             List<String> itemInfo = allItemsMap.get(item);
-            //TODO title -> item, there's only index 0,1
-            itemMap.put("title", itemInfo.get(0));
-            itemMap.put("description", itemInfo.get(1));
-            itemMap.put("price", itemInfo.get(2));
+            itemMap.put("title", item);
+            itemMap.put("description", itemInfo.get(0));
+            itemMap.put("price", itemInfo.get(1));
         }
         return itemMap;
     }
@@ -107,5 +108,25 @@ public class ProductsPage extends BasePage {
             default:
                 System.out.println("Item does not exist");
         }
+    }
+
+    public Map<String, WebElement> getElementsProductsPage(String productTitle){
+        Map<String, WebElement> map = new HashMap<>();
+
+        Integer index = Products.productWebIndex.get(productTitle);
+
+        WebElement image = Driver.getDriver().findElement(By.xpath("(//div[@class='inventory_item'])[" + index + "]/div/a/img"));
+
+        WebElement productName = Driver.getDriver().findElement(By.xpath("(//div[@class='inventory_item'])[" + index + "]//div[@class='inventory_item_name ']"));
+
+        WebElement description = Driver.getDriver().findElement(By.xpath("(//div[@class='inventory_item'])[" + index + "]//div[@class='inventory_item_desc']"));
+
+        WebElement price = Driver.getDriver().findElement(By.xpath("(//div[@class='inventory_item'])[" + index + "]//div[@class='pricebar']/div"));
+
+        map.put("image", image);
+        map.put("title", productName);
+        map.put("description", description);
+        map.put("price", price);
+        return map;
     }
 }
