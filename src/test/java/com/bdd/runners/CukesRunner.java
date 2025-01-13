@@ -13,8 +13,8 @@ import org.junit.runner.RunWith;
                 "pretty",
         },
         publish = true,
-        dryRun = true,
-        tags = "@wip",
+        dryRun = false,
+        tags = "@login",
         glue = "com/bdd/step_definitions",
         features = "src/test/resources/features"
 )

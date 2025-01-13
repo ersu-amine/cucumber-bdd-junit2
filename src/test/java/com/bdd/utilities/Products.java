@@ -31,7 +31,9 @@ public final class Products {
 
     private static final String[][] ALLITEMS = {ITEM1, ITEM2, ITEM3, ITEM4, ITEM5, ITEM0};
 
-    private static Map<String, List<String>> getAllItemsMap() {
+
+
+    public static Map<String, List<String>> getAllItemsMap() {
         Map<String, List<String>> itemsMap = putAllListIntoMap(ALLITEMS);
         return itemsMap;
     }
@@ -53,17 +55,4 @@ public final class Products {
         return itemsMap;
     }
 
-    private static Map<String, String> getItemMap(String item) {
-        Map<String, List<String>> allItemsMap = getAllItemsMap();
-        //create map to store item information
-        Map<String, String> itemMap = new HashMap<>();
-        //find item in all items map and put info to new map
-        if (allItemsMap.containsKey(item)) {
-            List<String> itemInfo = allItemsMap.get(item);
-            itemMap.put("title", itemInfo.get(0));
-            itemMap.put("description", itemInfo.get(1));
-            itemMap.put("price", itemInfo.get(2));
-        }
-        return itemMap;
-    }
 }

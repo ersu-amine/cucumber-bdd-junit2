@@ -1,4 +1,4 @@
-package com.bdd.pages.saucedemo;
+package com.bdd.pages;
 
 public class ShoppingCartPage {
 }

@@ -1,4 +1,4 @@
-package com.bdd.pages.saucedemo;
+package com.bdd.pages;
 
 import com.bdd.utilities.Driver;
 import org.junit.Assert;
