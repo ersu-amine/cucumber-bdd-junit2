@@ -15,7 +15,7 @@ public final class Products {
     private static final String[] ITEM1 = {"Sauce Labs Bolt T-Shirt",
             "Get your testing superhero on with the Sauce Labs bolt T-shirt. From American Apparel, 100% ringspun combed cotton, heather gray with red bolt.",
             "$15.99"};
-    private static final String[] ITEM2 = {"Sauce Labs Onesie ",
+    private static final String[] ITEM2 = {"Sauce Labs Onesie",
             "Rib snap infant onesie for the junior automation engineer in development. Reinforced 3-snap bottom closure, two-needle hemmed sleeved and bottom won't unravel.",
             "$7.99"};
     private static final String[] ITEM3 = {"Test.allTheThings() T-Shirt (Red)",
@@ -25,13 +25,25 @@ public final class Products {
             "carry.allTheThings() with the sleek, streamlined Sly Pack that melds uncompromising style with unequaled laptop and tablet protection.",
             "$29.99"};
 
-    private static final String[] ITEM5 = {"Sauce Labs Fleece Jacket ",
+    private static final String[] ITEM5 = {"Sauce Labs Fleece Jacket",
             "It's not every day that you come across a midweight quarter-zip fleece jacket capable of handling everything from a relaxing day outdoors to a busy day at the office.",
             "$49.99"};
 
     private static final String[][] ALLITEMS = {ITEM1, ITEM2, ITEM3, ITEM4, ITEM5, ITEM0};
 
+    //TODO not sure about this structuring
+    public static  Map<String, Integer> productWebIndex = makeIndexMap();
 
+    private static Map<String, Integer> makeIndexMap(){
+        productWebIndex = new HashMap<>();
+        productWebIndex.put(ITEM4[0],1);
+        productWebIndex.put(ITEM0[0],2);
+        productWebIndex.put(ITEM1[0],3);
+        productWebIndex.put(ITEM5[0],4);
+        productWebIndex.put(ITEM2[0],5);
+        productWebIndex.put(ITEM3[0],6);
+        return productWebIndex;
+    }
 
     public static Map<String, List<String>> getAllItemsMap() {
         Map<String, List<String>> itemsMap = putAllListIntoMap(ALLITEMS);
@@ -54,5 +66,4 @@ public final class Products {
         }
         return itemsMap;
     }
-
 }
