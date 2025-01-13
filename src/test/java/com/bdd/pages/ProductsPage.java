@@ -15,30 +15,55 @@ public class ProductsPage extends BasePage {
 
     @FindBy(xpath = "//div[.='Sauce Labs Bike Light']")
     private WebElement item0Element;
+
     @FindBy(xpath = "//div[.='Sauce Labs Bolt T-Shirt']")
     private WebElement item1Element;
+
     @FindBy(xpath = "//div[.='Sauce Labs Onesie']")
     private WebElement item2Element;
+
     @FindBy(xpath = "//div[.='Test.allTheThings() T-Shirt (Red)']")
     private WebElement item3Element;
+
     @FindBy(xpath = "//div[.='Sauce Labs Backpack']")
     private WebElement item4Element;
+
     @FindBy(xpath = "//div[.='Sauce Labs Fleece Jacket']")
     private WebElement item5Element;
+
     @FindBy(xpath = "//div[@id='header_container']//span[.='Products']")
     private WebElement pageHeader;
+
     @FindBy(css = "div.inventory_item_label>a>div")
     private List<WebElement> productList;
+
+    //all images from products page, src attribute contains the image link
+    @FindBy(css = "div.inventory_item_img>a>img")
+    private List<WebElement> imageList;
+
+    //item image on item page, alt attribute contains the item title
+    @FindBy(xpath = "//div[@id='inventory_item_container']//img")
+    private WebElement imageOnItemPage;
 
     public void confirmProductsHeader() {
         Assert.assertEquals("Products page header does not match", "Products", pageHeader.getText());
     }
 
+    /**
+     * Look into map of all product information and return given items description and price
+     * @param itemTitle product title
+     * @return list of string containing description and price
+     */
     public List<String> getItemsInfo(String itemTitle) {
         //[0] contains description, [1] contains price
         return allItemsMap.get(itemTitle);
     }
 
+    /**
+     * Map of string containing product info in key value format
+     * @param item product title
+     * @return map containing item,description, price
+     */
     private static Map<String, String> getItemMap(String item) {
         //create map to store item information
         Map<String, String> itemMap = new HashMap<>();
@@ -83,14 +108,4 @@ public class ProductsPage extends BasePage {
                 System.out.println("Item does not exist");
         }
     }
-
-
-    //all images from products page, src attribute contains the image link
-    @FindBy(css = "div.inventory_item_img>a>img")
-    private List<WebElement> imageList;
-
-    //item image on item page, alt attribute contains the item title
-    @FindBy(xpath = "//div[@id='inventory_item_container']//img")
-    private WebElement imageOnItemPage;
-
 }
