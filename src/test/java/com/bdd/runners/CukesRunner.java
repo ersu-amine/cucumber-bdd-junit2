@@ -11,10 +11,11 @@ import org.junit.runner.RunWith;
                 "rerun:target/rerun.txt",
                 "me.jvt.cucumber.report.PrettyReports:target/cucumber",
                 "pretty",
+                "rerun:target/rerun.txt",
         },
         publish = true,
-        dryRun = true,
-        tags = "@wip",
+        dryRun = false,
+        tags = "@trial",
         glue = "com/bdd/step_definitions",
         features = "src/test/resources/features"
 )

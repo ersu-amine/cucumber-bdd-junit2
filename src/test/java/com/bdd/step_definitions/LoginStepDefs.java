@@ -1,6 +1,6 @@
-package com.bdd.step_definitions.saucedemo_stepdef;
+package com.bdd.step_definitions;
 
-import com.bdd.pages.saucedemo.LoginPage;
+import com.bdd.pages.LoginPage;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
