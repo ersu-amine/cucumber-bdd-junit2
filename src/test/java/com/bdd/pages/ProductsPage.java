@@ -121,6 +121,7 @@ public class ProductsPage extends BasePage {
 
         Integer index = Products.productWebIndex.get(productTitle);
 
+        //TODO
         WebElement image = Driver.getDriver().findElement(By.xpath("(//div[@class='inventory_item'])[" + index + "]/div/a/img"));
 
         WebElement productName = Driver.getDriver().findElement(By.xpath("(//div[@class='inventory_item'])[" + index + "]//div[@class='inventory_item_name ']"));
@@ -191,6 +192,5 @@ public class ProductsPage extends BasePage {
         }
 
         return expectedPrices;
-
     }
 }
