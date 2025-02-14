@@ -9,9 +9,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.Select;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class ProductsPage extends BasePage {
     private static Map<String, List<String>> allItemsMap = Products.getAllItemsMap();
@@ -155,8 +153,44 @@ public class ProductsPage extends BasePage {
         return BrowserUtilities.getWebElementsText(productList);
     }
 
+    /**
+     * get prices of web elements from UI
+     * @return list of prices in dollar sign and value format
+     */
     public List<String> getProductPrices(){
 
         return BrowserUtilities.getWebElementsText(priceList);
+    }
+
+    /**
+     * sorts prices of the expected price list
+     * @param sortAs 'ascending' order or 'descending' order
+     * @return list of price as the original form with dollar sign
+     */
+    public List<String> sortPrices(String sortAs){
+        List<String> expectedPrices = Products.getAllPrices();
+        List<Double> priceValue = new ArrayList<>();
+
+        for (String expectedPrice : expectedPrices) {
+            priceValue.add(Double.parseDouble(expectedPrice.substring(1)));
+        }
+
+        if(sortAs.equals("ascending")){
+            Collections.sort(priceValue);
+        }else if (sortAs.equals("descending")){
+            priceValue.sort(Collections.reverseOrder());
+        }else {
+            System.out.println("Price cannot be sorted, enter in proper format 'ascending' or 'descending'");
+        }
+
+        expectedPrices.clear(); //remove all of the items
+
+        for (Double i : priceValue) {
+            //add dollar sign to each price
+            expectedPrices.add("$"+ i);
+        }
+
+        return expectedPrices;
+
     }
 }
