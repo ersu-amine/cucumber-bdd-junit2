@@ -35,17 +35,18 @@ Feature: As a user I should be able to see products on the Products page
   Scenario Outline: User should see matching title and image on the products and the item page
     When user enters "standard_user" and "secret_sauce"
     And user should land on the products page
+    And user should see matching "<item title>" and "<image>" on product page
     And user clicks on item "<item title>"
     Then user should see matching "<item title>" and "<image>" on item page
 
     Examples:
       | item title                        | image                                               |
-      | Sauce Labs Backpack               | /static/media/sauce-backpack-1200x1500.0a0b85a3.jpg |
-      | Sauce Labs Bike Light             | /static/media/bike-light-1200x1500.37c843b0.jpg     |
-      | Sauce Labs Bolt T-Shirt           | /static/media/bolt-shirt-1200x1500.c2599ac5.jpg     |
-      | Sauce Labs Fleece Jacket          | /static/media/sauce-pullover-1200x1500.51d7ffaf.jpg |
-      | Sauce Labs Onesie                 | /static/media/red-onesie-1200x1500.2ec615b2.jpg     |
-      | Test.allTheThings() T-Shirt (Red) | /static/media/red-tatt-1200x1500.30dadef4.jpg       |
+      | Sauce Labs Backpack               | https://www.saucedemo.com/static/media/sauce-backpack-1200x1500.0a0b85a3.jpg |
+      | Sauce Labs Bike Light             | https://www.saucedemo.com/static/media/bike-light-1200x1500.37c843b0.jpg     |
+      | Sauce Labs Bolt T-Shirt           | https://www.saucedemo.com/static/media/bolt-shirt-1200x1500.c2599ac5.jpg     |
+      | Sauce Labs Fleece Jacket          | https://www.saucedemo.com/static/media/sauce-pullover-1200x1500.51d7ffaf.jpg |
+      | Sauce Labs Onesie                 | https://www.saucedemo.com/static/media/red-onesie-1200x1500.2ec615b2.jpg     |
+      | Test.allTheThings() T-Shirt (Red) | https://www.saucedemo.com/static/media/red-tatt-1200x1500.30dadef4.jpg       |
 
 
 

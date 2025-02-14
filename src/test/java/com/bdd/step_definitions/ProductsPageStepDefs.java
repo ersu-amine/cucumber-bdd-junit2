@@ -39,12 +39,6 @@ public class ProductsPageStepDefs extends ProductsPage {
         clickOnItem(itemTitle);
     }
 
-
-    @Then("user should see matching {string} and {string} on item page")
-    public void user_should_see_matching_and_on_item_page(String itemTitle, String imageUrl) {
-
-    }
-
     @And("user should see title {string}, description and price on products page")
     public void userShouldSeeTitleDescriptionAndPriceOnProductsPage(String title) {
         Map<String, WebElement> elements = getElementsProductsPage(title);
@@ -60,5 +54,12 @@ public class ProductsPageStepDefs extends ProductsPage {
 
         Assert.assertEquals(itemMap.get("price"),elements.get("price").getText());
         LOG.info("Price is as EXPECTED");
+    }
+
+
+    @And("user should see matching {string} and {string} on product page")
+    public void userShouldSeeMatchingAndOnProductPage(String itemTitle, String imageSrc) {
+        WebElement imageElement = getImageElement(itemTitle);
+        Assert.assertEquals(imageSrc, imageElement.getAttribute("src"));
     }
 }
