@@ -20,27 +20,6 @@ public class SortStepDefs extends ProductsPage {
         selectFilter(sortBy);
     }
 
-    @Then("user should see prices of products in descending order")
-    public void user_should_see_prices_of_products_in_descending_order() {
-        List<String> expectedPrices = Products.getAllPrices();
-        //TODO sort prices by making them numbers
-
-        List<String> productPrices = getProductPrices();
-
-        Assert.assertEquals(expectedPrices,productPrices);
-
-    }
-
-    @Then("user should see prices of products in ascending order")
-    public void user_should_see_prices_of_products_in_ascending_order() {
-        List<String> expectedPrices = Products.getAllPrices();
-        //TODO sort prices by making them numbers
-
-        List<String> productPrices = getProductPrices();
-
-        Assert.assertEquals(expectedPrices,productPrices);
-
-    }
 
     @Then("user should see product names of products in alphabetical ascending order")
     public void user_should_see_product_names_of_products_in_alphabetical_ascending_order() {
@@ -63,5 +42,12 @@ public class SortStepDefs extends ProductsPage {
     }
 
 
+    @Then("user should see prices of products in {string} order")
+    public void userShouldSeePricesOfProductsInOrder(String sortAs) {
+        List<String> expectedPrices = sortPrices(sortAs);
 
+        List<String> productPrices = getProductPrices();
+
+        Assert.assertEquals(expectedPrices,productPrices);
+    }
 }

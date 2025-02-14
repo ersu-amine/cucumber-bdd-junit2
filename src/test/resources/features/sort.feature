@@ -1,4 +1,4 @@
-@WIPP
+@Sort
 Feature: As a customer, I want to sort products by price/name to find items within my budget
 
   Background: User has logged in and user is on the products page
@@ -8,11 +8,11 @@ Feature: As a customer, I want to sort products by price/name to find items with
 
   Scenario: User should be able to sort products by price (low-high)
     And user selects "Price (low to high)"
-    Then user should see prices of products in ascending order
+    Then user should see prices of products in "ascending" order
 
   Scenario: User should be able to sort products by price (high-low)
     And user selects "Price (high to low)"
-    Then user should see prices of products in descending order
+    Then user should see prices of products in "descending" order
 
   Scenario: User should be able to sort products by name (A to Z)
     And user selects "Name (A to Z)"
