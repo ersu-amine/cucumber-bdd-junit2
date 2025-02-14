@@ -1,10 +1,7 @@
 package com.bdd.utilities;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public final class Products {
 
@@ -29,6 +26,25 @@ public final class Products {
             "It's not every day that you come across a midweight quarter-zip fleece jacket capable of handling everything from a relaxing day outdoors to a busy day at the office.",
             "$49.99"};
 
+    private static final String[] TITLES = {"Sauce Labs Bike Light",
+            "Sauce Labs Bolt T-Shirt",
+            "Sauce Labs Onesie",
+            "Test.allTheThings() T-Shirt (Red)",
+            "Sauce Labs Backpack",
+            "Sauce Labs Fleece Jacket",
+    };
+
+    public static List<String> getTitles(){
+        return Arrays.asList(TITLES);
+    }
+
+    public static List<String> getAllPrices(){
+        List<String> list = new ArrayList<>();
+        for (String[] each : ALLITEMS) {
+            list.add(each[2]); //add price
+        }
+        return list;
+    }
     private static final String[][] ALLITEMS = {ITEM1, ITEM2, ITEM3, ITEM4, ITEM5, ITEM0};
 
     //TODO not sure about this structuring

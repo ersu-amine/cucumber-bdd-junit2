@@ -7,10 +7,9 @@ import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.Select;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class ProductsPage extends BasePage {
     private static Map<String, List<String>> allItemsMap = Products.getAllItemsMap();
@@ -39,6 +38,9 @@ public class ProductsPage extends BasePage {
     @FindBy(css = "div.inventory_item_label>a>div")
     private List<WebElement> productList;
 
+    @FindBy(css = "div.inventory_item_description>div.pricebar>div")
+    private List<WebElement> priceList;
+
     //all images from products page, src attribute contains the image link
     @FindBy(css = "div.inventory_item_img>a>img")
     private List<WebElement> imageList;
@@ -46,6 +48,10 @@ public class ProductsPage extends BasePage {
     //item image on item page, alt attribute contains the item title
     @FindBy(xpath = "//div[@id='inventory_item_container']//img")
     private WebElement imageOnItemPage;
+
+    //sorting
+    @FindBy(css = "select.product_sort_container")
+    private WebElement sortDropdown;
 
     public void confirmProductsHeader() {
         Assert.assertEquals("Products page header does not match", "Products", pageHeader.getText());
@@ -128,5 +134,63 @@ public class ProductsPage extends BasePage {
         map.put("description", description);
         map.put("price", price);
         return map;
+    }
+
+    public void selectFilter(String sortBy){
+        Select dropdown = new Select(sortDropdown);
+        dropdown.selectByVisibleText(sortBy);
+
+        Assert.assertEquals(sortBy,dropdown.getFirstSelectedOption().getText());
+
+    }
+
+    /**
+     *
+     * @return actual titles of products from the page
+     */
+    public List<String> getProductTitles(){
+
+        return BrowserUtilities.getWebElementsText(productList);
+    }
+
+    /**
+     * get prices of web elements from UI
+     * @return list of prices in dollar sign and value format
+     */
+    public List<String> getProductPrices(){
+
+        return BrowserUtilities.getWebElementsText(priceList);
+    }
+
+    /**
+     * sorts prices of the expected price list
+     * @param sortAs 'ascending' order or 'descending' order
+     * @return list of price as the original form with dollar sign
+     */
+    public List<String> sortPrices(String sortAs){
+        List<String> expectedPrices = Products.getAllPrices();
+        List<Double> priceValue = new ArrayList<>();
+
+        for (String expectedPrice : expectedPrices) {
+            priceValue.add(Double.parseDouble(expectedPrice.substring(1)));
+        }
+
+        if(sortAs.equals("ascending")){
+            Collections.sort(priceValue);
+        }else if (sortAs.equals("descending")){
+            priceValue.sort(Collections.reverseOrder());
+        }else {
+            System.out.println("Price cannot be sorted, enter in proper format 'ascending' or 'descending'");
+        }
+
+        expectedPrices.clear(); //remove all of the items
+
+        for (Double i : priceValue) {
+            //add dollar sign to each price
+            expectedPrices.add("$"+ i);
+        }
+
+        return expectedPrices;
+
     }
 }
