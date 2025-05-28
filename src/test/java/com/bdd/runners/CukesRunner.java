@@ -9,13 +9,12 @@ import org.junit.runner.RunWith;
 @CucumberOptions(
         plugin ={
                 "rerun:target/rerun.txt",
-                "me.jvt.cucumber.report.PrettyReports:target/cucumber",
                 "pretty",
-                "rerun:target/rerun.txt",
+                "io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm"
         },
         publish = true,
         dryRun = false,
-        tags = "@trial",
+        tags = "",
         glue = "com/bdd/step_definitions",
         features = "src/test/resources/features"
 )

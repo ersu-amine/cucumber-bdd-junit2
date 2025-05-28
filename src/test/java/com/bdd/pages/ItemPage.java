@@ -9,8 +9,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class ItemPage extends BasePage {
-
-
     /**
      * Only 1 element on the item page
      * @return map of web elements, containing title, description, and price
@@ -30,6 +28,5 @@ public class ItemPage extends BasePage {
 
         return map;
     }
-
-
+    
 }
